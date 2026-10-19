@@ -1,1 +1,1 @@
-# My-site_Max
+# статический сайт на Github Pages
