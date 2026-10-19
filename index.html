@@ -1,12 +1,1824 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>GTA VI — Vice City | Максим Николаев</title>
+
+    <meta name="description"
+          content="Фанатский сайт GTA VI. Добро пожаловать в Вайс-Сити — город неона, свободы и преступлений.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* =========================
+           ОСНОВНЫЕ НАСТРОЙКИ
+        ========================= */
+
+        :root {
+            --pink: #ff4fa3;
+            --purple: #a855f7;
+            --cyan: #50e8ff;
+            --dark: #09070e;
+            --dark-card: #15101e;
+            --white: #ffffff;
+            --gray: #b8b0c4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+
+            opacity: 0.12;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        section {
+            position: relative;
+            padding: 110px 7%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(40px, 6vw, 76px);
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            color: var(--pink);
+        }
+
+        .section-description {
+            color: var(--gray);
+            max-width: 650px;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        /* =========================
+           НАВИГАЦИЯ
+        ========================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 22px 7%;
+
+            background: rgba(9, 7, 14, 0.8);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(255, 79, 163, 0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--pink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #d4cbdc;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink);
+        }
+
+        .nav-button {
+            border: 1px solid var(--pink);
+            padding: 11px 18px;
+            color: var(--pink) !important;
+        }
+
+        .nav-button:hover {
+            background: var(--pink);
+            color: white !important;
+            box-shadow: 0 0 25px rgba(255, 79, 163, 0.35);
+        }
+
+        /* =========================
+           ГЛАВНЫЙ ЭКРАН
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 7% 90px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(9, 7, 14, 0.98) 0%,
+                    rgba(9, 7, 14, 0.82) 45%,
+                    rgba(9, 7, 14, 0.15) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    var(--dark) 0%,
+                    transparent 45%
+                ),
+                url('./images/atmosphere.jpg') center 35% / cover no-repeat;
+
+            background-color: #160c24;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            right: -150px;
+            top: 10%;
+
+            background: var(--purple);
+            filter: blur(200px);
+            opacity: 0.18;
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 10px 16px;
+            margin-bottom: 28px;
+
+            border: 1px solid rgba(255, 79, 163, 0.4);
+            background: rgba(255, 79, 163, 0.08);
+
+            color: #ff9acb;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-tag::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+
+            background: var(--pink);
+            border-radius: 50%;
+
+            box-shadow: 0 0 12px var(--pink);
+        }
+
+        .hero-logo {
+            width: min(480px, 85vw);
+            max-height: 270px;
+
+            object-fit: contain;
+            object-position: left center;
+
+            margin-bottom: 25px;
+
+            filter: drop-shadow(0 0 25px rgba(255, 79, 163, 0.2));
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(52px, 8vw, 105px);
+            line-height: 0.98;
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--pink);
+            text-shadow: 0 0 35px rgba(255, 79, 163, 0.3);
+        }
+
+        .hero-description {
+            max-width: 570px;
+            color: #d0c7d8;
+            line-height: 1.9;
+            font-size: 15px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+
+            padding: 17px 25px;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .button-primary {
+            background: var(--pink);
+            color: white;
+
+            box-shadow: 0 0 25px rgba(255, 79, 163, 0.15);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 35px rgba(255, 79, 163, 0.4);
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 35px;
+            left: 7%;
+            right: 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: #aaa0b8;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-bottom span:last-child {
+            color: var(--pink);
+        }
+
+        /* =========================
+           БЕГУЩАЯ СТРОКА
+        ========================= */
+
+        .marquee {
+            overflow: hidden;
+            padding: 19px 0;
+
+            background: var(--pink);
+            color: #120814;
+
+            transform: rotate(-1deg) scale(1.02);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-track span {
+            font-family: 'Anton', sans-serif;
+            font-size: 25px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding-right: 35px;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* =========================
+           ОБО МНЕ
+        ========================= */
+
+        .about {
+            background:
+                radial-gradient(
+                    ellipse at 10% 50%,
+                    rgba(168, 85, 247, 0.1),
+                    transparent 55%
+                ),
+                var(--dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-card {
+            position: relative;
+
+            padding: 45px;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(
+                135deg,
+                rgba(255, 79, 163, 0.08),
+                rgba(168, 85, 247, 0.05)
+            );
+        }
+
+        .about-card::before {
+            content: "";
+            position: absolute;
+
+            left: -1px;
+            top: 30px;
+            bottom: 30px;
+
+            width: 3px;
+            background: var(--pink);
+            box-shadow: 0 0 15px var(--pink);
+        }
+
+        .about-number {
+            color: rgba(255, 255, 255, 0.08);
+            font-family: 'Anton', sans-serif;
+            font-size: 100px;
+            line-height: 1;
+        }
+
+        .about-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--gray);
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        .about-signature {
+            margin-top: 25px;
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           ОСОБЕННОСТИ GTA VI
+        ========================= */
+
+        .features {
+            background: #0d0914;
+        }
+
+        .features-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 40px;
+            margin-bottom: 55px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            position: relative;
+            min-height: 350px;
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #171020;
+
+            transition: 0.35s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--pink);
+            box-shadow: 0 15px 50px rgba(255, 79, 163, 0.1);
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                0deg,
+                rgba(9, 7, 14, 1) 0%,
+                rgba(9, 7, 14, 0.65) 40%,
+                rgba(9, 7, 14, 0.05) 100%
+            );
+
+            z-index: 1;
+        }
+
+        .feature-card::after {
+            content: "";
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 3px;
+
+            background: linear-gradient(
+                90deg,
+                var(--pink),
+                var(--purple),
+                var(--cyan)
+            );
+
+            z-index: 2;
+        }
+
+        .feature-card img {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.6s;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .feature-number,
+        .feature-card h3,
+        .feature-card p {
+            position: relative;
+            z-index: 3;
+        }
+
+        .feature-number {
+            color: var(--pink);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #d3cadb;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           ЖИВОЙ МИР
+        ========================= */
+
+        .living-world {
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(9, 7, 14, 0.98) 0%,
+                    rgba(9, 7, 14, 0.82) 45%,
+                    rgba(9, 7, 14, 0.25) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    var(--dark),
+                    transparent 35%,
+                    transparent 70%,
+                    var(--dark)
+                ),
+                url('./images/atmosphere.jpg') center / cover no-repeat;
+
+            background-color: #24132c;
+        }
+
+        .living-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .living-content h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(48px, 7vw, 85px);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .living-content h2 span {
+            color: var(--pink);
+        }
+
+        .living-content p {
+            color: #ddd3e5;
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        .living-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .living-stat strong {
+            display: block;
+            color: var(--cyan);
+            font-family: 'Anton', sans-serif;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .living-stat span {
+            color: #c6bbd0;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           ДЖЕЙСОН И ЛЮСИЯ
+        ========================= */
+
+        .characters {
+            background:
+                radial-gradient(
+                    ellipse at 50% 0%,
+                    rgba(168, 85, 247, 0.08),
+                    transparent 60%
+                ),
+                var(--dark);
+        }
+
+        .characters-heading {
+            margin-bottom: 55px;
+        }
+
+        .character-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+
+            min-height: 570px;
+            margin-bottom: 35px;
+
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            overflow: hidden;
+        }
+
+        .character-card.reverse .character-image {
+            order: 2;
+        }
+
+        .character-card.reverse .character-info {
+            order: 1;
+        }
+
+        .character-image {
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+            background: #21142c;
+        }
+
+        .character-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                0deg,
+                rgba(9, 7, 14, 0.25),
+                transparent 60%
+            );
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+
+            object-fit: cover;
+
+            transition: transform 0.7s;
+        }
+
+        .character-card:hover .character-image img {
+            transform: scale(1.04);
+        }
+
+        .character-info {
+            padding: clamp(30px, 5vw, 65px);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .character-role {
+            color: var(--pink);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+        .character-info h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(45px, 5vw, 72px);
+            text-transform: uppercase;
+            line-height: 0.98;
+
+            margin-bottom: 25px;
+        }
+
+        .character-info p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 2;
+
+            margin-bottom: 20px;
+        }
+
+        .character-quote {
+            margin-top: 10px;
+            padding-left: 18px;
+
+            border-left: 2px solid var(--pink);
+
+            color: #f7b2d5;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .character-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .character-tags span {
+            padding: 9px 12px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: #d6ccdf;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           ИСТОРИЯ
+        ========================= */
+
+        .story {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(168, 85, 247, 0.1),
+                    transparent 60%
+                ),
+                #0d0914;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .story-list {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .story-item {
+            display: grid;
+            grid-template-columns: 65px 1fr;
+            gap: 20px;
+
+            padding: 28px 0;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .story-item-number {
+            color: var(--pink);
+            font-family: 'Anton', sans-serif;
+            font-size: 28px;
+        }
+
+        .story-item h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .story-item p {
+            color: var(--gray);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* =========================
+           ФИНАЛЬНЫЙ БЛОК
+        ========================= */
+
+        .final-section {
+            padding: 120px 7%;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    0deg,
+                    rgba(9, 7, 14, 0.95),
+                    rgba(9, 7, 14, 0.7)
+                ),
+                url('./images/atmosphere.jpg') center / cover no-repeat;
+
+            background-color: #21122d;
+        }
+
+        .final-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(50px, 9vw, 110px);
+            text-transform: uppercase;
+            line-height: 0.98;
+            margin-bottom: 25px;
+        }
+
+        .final-section h2 span {
+            color: var(--pink);
+        }
+
+        .final-section p {
+            color: #d3c9dc;
+            max-width: 600px;
+            margin: 0 auto 35px;
+
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .final-logo {
+            width: min(320px, 70vw);
+            margin: 0 auto 35px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           ПОДВАЛ
+        ========================= */
+
+        footer {
+            padding: 35px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+
+            background: #07060b;
+            border-top: 1px solid rgba(255, 79, 163, 0.2);
+        }
+
+        .footer-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 22px;
+        }
+
+        .footer-logo span {
+            color: var(--pink);
+        }
+
+        footer p {
+            color: #8f8499;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #b7a9c2;
+            font-size: 11px;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--pink);
+        }
+
+        /* =========================
+           АНИМАЦИИ
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           АДАПТИВНОСТЬ
+        ========================= */
+
+        @media (max-width: 1000px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-grid {
+                gap: 40px;
+            }
+
+            .character-card {
+                min-height: 450px;
+            }
+
+            .character-image,
+            .character-image img {
+                min-height: 450px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            section {
+                padding: 75px 6%;
+            }
+
+            .navbar {
+                padding: 18px 6%;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: 9px;
+            }
+
+            .nav-links a:nth-child(2),
+            .nav-links a:nth-child(3) {
+                display: none;
+            }
+
+            .nav-button {
+                padding: 9px 10px;
+            }
+
+            .hero {
+                min-height: 850px;
+                padding: 130px 6% 100px;
+
+                background-position: 60% center;
+            }
+
+            .hero h1 {
+                font-size: clamp(50px, 13vw, 75px);
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .hero-bottom {
+                left: 6%;
+                right: 6%;
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card {
+                padding: 30px;
+            }
+
+            .features-heading {
+                display: block;
+            }
+
+            .features-heading .section-description {
+                margin-top: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                min-height: 340px;
+            }
+
+            .living-world {
+                min-height: 600px;
+                padding: 85px 6%;
+                background-position: 60% center;
+            }
+
+            .living-content h2 {
+                font-size: 55px;
+            }
+
+            .living-content p {
+                font-size: 13px;
+            }
+
+            .living-stats {
+                gap: 25px;
+            }
+
+            .character-card {
+                grid-template-columns: 1fr;
+            }
+
+            .character-card.reverse .character-image,
+            .character-card.reverse .character-info {
+                order: initial;
+            }
+
+            .character-image,
+            .character-image img {
+                min-height: 400px;
+                height: 400px;
+            }
+
+            .character-info {
+                padding: 30px;
+            }
+
+            .character-info h3 {
+                font-size: 55px;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .final-section {
+                padding: 90px 6%;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Заголовок страницы</h1>
-    <p>Это параграф</p>
+
+    <!-- =========================
+         НАВИГАЦИЯ
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="#home" class="nav-logo">
+            VICE <span>VIBES</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#about">Обо мне</a>
+            <a href="#world">Живой мир</a>
+            <a href="#characters">Персонажи</a>
+            <a href="#story">История</a>
+            <a href="#characters" class="nav-button">GTA VI</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         ГЛАВНЫЙ ЭКРАН
+    ========================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="hero-tag">
+                    Добро пожаловать в Леониду
+                </div>
+
+                <img
+                    src="./images/gta6-logo.png"
+                    alt="GTA VI"
+                    class="hero-logo"
+                    onerror="this.style.display='none';"
+                >
+
+                <h1>
+                    Добро пожаловать
+                    <span>в Vice City</span>
+                </h1>
+
+                <p class="hero-description">
+                    Неоновые улицы, бесконечные вечеринки,
+                    роскошные автомобили и опасные знакомства.
+                    Добро пожаловать в мир GTA VI — место,
+                    где каждый день превращается в историю.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#world" class="button button-primary">
+                        Исследовать город →
+                    </a>
+
+                    <a href="#characters" class="button button-secondary">
+                        Главные герои
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-bottom">
+                <span>Леонида, США</span>
+                <span>Добро пожаловать в рай</span>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             БЕГУЩАЯ СТРОКА
+        ========================= -->
+
+        <div class="marquee">
+
+            <div class="marquee-track">
+                <span>Vice City ✦ Leonida ✦ GTA VI ✦ The American Dream ✦ </span>
+                <span>Vice City ✦ Leonida ✦ GTA VI ✦ The American Dream ✦ </span>
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ОБО МНЕ
+        ========================= -->
+
+        <section class="about" id="about">
+
+            <div class="container about-grid">
+
+                <div class="reveal">
+
+                    <span class="section-label">
+                        001 / Автор проекта
+                    </span>
+
+                    <h2 class="section-title">
+                        Мой мир.<br>
+                        <span>Мои правила.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Этот сайт посвящён GTA VI — одной из самых
+                        ожидаемых игр в мире. Здесь собраны материалы
+                        о городе, персонажах и атмосфере новой части
+                        Grand Theft Auto.
+                    </p>
+
+                </div>
+
+                <div class="about-card reveal">
+
+                    <div class="about-number">01</div>
+
+                    <h3>Максим Николаев</h3>
+
+                    <p>
+                        Добро пожаловать на мой фанатский сайт GTA VI.
+                        Я создал эту страницу для всех, кто любит
+                        открытые миры, интересные истории, автомобили
+                        и атмосферу криминальных приключений.
+                    </p>
+
+                    <div class="about-signature">
+                        Fan made project / 2026
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ОСОБЕННОСТИ
+        ========================= -->
+
+        <section class="features">
+
+            <div class="container">
+
+                <div class="features-heading reveal">
+
+                    <div>
+                        <span class="section-label">
+                            002 / Мир игры
+                        </span>
+
+                        <h2 class="section-title">
+                            Добро пожаловать<br>
+                            в <span>Леониду</span>
+                        </h2>
+                    </div>
+
+                    <p class="section-description">
+                        Исследуй солнечный штат, знакомься с его
+                        жителями и открывай новые стороны жизни
+                        в большом американском городе.
+                    </p>
+
+                </div>
+
+
+                <div class="features-grid">
+
+                    <article class="feature-card reveal">
+
+                        <img
+                            src="./images/atmosphere.jpg"
+                            alt="Атмосфера мира GTA VI"
+                            loading="lazy"
+                        >
+
+                        <span class="feature-number">01 / CITY LIFE</span>
+
+                        <h3>Жизнь города</h3>
+
+                        <p>
+                            Улицы, автомобили, прохожие и бесконечное
+                            движение большого города.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card reveal">
+
+                        <img
+                            src="./images/jason.jpg"
+                            alt="Джейсон Дюваль"
+                            loading="lazy"
+                        >
+
+                        <span class="feature-number">02 / CHARACTERS</span>
+
+                        <h3>Главные герои</h3>
+
+                        <p>
+                            Познакомься с Джейсоном и Люсией —
+                            двумя людьми, чьи судьбы переплетаются.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card reveal">
+
+                        <img
+                            src="./images/lucia.jpg"
+                            alt="Люсия Каминос"
+                            loading="lazy"
+                        >
+
+                        <span class="feature-number">03 / STORY</span>
+
+                        <h3>Новая история</h3>
+
+                        <p>
+                            Приключения, опасные решения и попытка
+                            построить собственную жизнь.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ЖИВОЙ МИР
+        ========================= -->
+
+        <section class="living-world" id="world">
+
+            <div class="container">
+
+                <div class="living-content reveal">
+
+                    <span class="section-label">
+                        003 / Explore Leonida
+                    </span>
+
+                    <h2>
+                        Живой мир.<br>
+                        <span>Без границ.</span>
+                    </h2>
+
+                    <p>
+                        Леонида — штат контрастов, где солнечные пляжи
+                        соседствуют с шумными улицами, роскошными
+                        районами и опасными местами. Город продолжает
+                        жить, пока ты исследуешь его.
+                    </p>
+
+                    <div class="living-stats">
+
+                        <div class="living-stat">
+                            <strong>VICE CITY</strong>
+                            <span>Город огней</span>
+                        </div>
+
+                        <div class="living-stat">
+                            <strong>LEONIDA</strong>
+                            <span>Штат приключений</span>
+                        </div>
+
+                        <div class="living-stat">
+                            <strong>GTA VI</strong>
+                            <span>Новая глава</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ПЕРСОНАЖИ
+        ========================= -->
+
+        <section class="characters" id="characters">
+
+            <div class="container">
+
+                <div class="characters-heading reveal">
+
+                    <span class="section-label">
+                        004 / Главные герои
+                    </span>
+
+                    <h2 class="section-title">
+                        Две судьбы.<br>
+                        <span>Одна история.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Познакомься с главными героями GTA VI.
+                        Их отношения и решения становятся важной
+                        частью истории игры.
+                    </p>
+
+                </div>
+
+
+                <!-- ДЖЕЙСОН -->
+
+                <article class="character-card reveal">
+
+                    <div class="character-image">
+
+                        <img
+                            src="./images/jason.jpg"
+                            alt="Джейсон Дюваль из GTA VI"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="character-info">
+
+                        <span class="character-role">
+                            The Criminal
+                        </span>
+
+                        <h3>
+                            Джейсон<br>
+                            Дюваль
+                        </h3>
+
+                        <p>
+                            Джейсон привык находиться среди людей,
+                            которые живут за счёт обмана и незаконных
+                            сделок. После службы в армии он оказался
+                            в мире контрабандистов на островах Леониды.
+                        </p>
+
+                        <p>
+                            Он хочет оставить неприятности позади,
+                            но прошлое и новые обстоятельства постоянно
+                            вмешиваются в его планы.
+                        </p>
+
+                        <div class="character-quote">
+                            Его будущее зависит от решений,
+                            которые он принимает вместе с Люсией.
+                        </div>
+
+                        <div class="character-tags">
+                            <span>Действия</span>
+                            <span>Криминал</span>
+                            <span>Леонида</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ЛЮСИЯ -->
+
+                <article class="character-card reverse reveal">
+
+                    <div class="character-image">
+
+                        <img
+                            src="./images/lucia.jpg"
+                            alt="Люсия Каминос из GTA VI"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="character-info">
+
+                        <span class="character-role">
+                            The Fighter
+                        </span>
+
+                        <h3>
+                            Люсия<br>
+                            Каминос
+                        </h3>
+
+                        <p>
+                            Люсия научилась бороться за себя ещё
+                            в детстве. Жизнь привела её в тюрьму
+                            Леониды, но она не отказалась от желания
+                            добиться лучшего будущего.
+                        </p>
+
+                        <p>
+                            Теперь Люсия готова рискнуть ради жизни,
+                            о которой давно мечтала. Вместе с Джейсоном
+                            она оказывается в центре опасных событий.
+                        </p>
+
+                        <div class="character-quote">
+                            Для Люсии свобода — это возможность
+                            самой определять свою судьбу.
+                        </div>
+
+                        <div class="character-tags">
+                            <span>Сильный характер</span>
+                            <span>Свобода</span>
+                            <span>Новые цели</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ИСТОРИЯ
+        ========================= -->
+
+        <section class="story" id="story">
+
+            <div class="container story-grid">
+
+                <div class="reveal">
+
+                    <span class="section-label">
+                        005 / Сюжет
+                    </span>
+
+                    <h2 class="section-title">
+                        Доверие.<br>
+                        <span>Риск.</span><br>
+                        Последствия.
+                    </h2>
+
+                    <p class="section-description">
+                        Иногда один неверный шаг меняет всё.
+                        В мире GTA VI героям придётся решать,
+                        кому можно доверять и какой ценой
+                        достанется желанная жизнь.
+                    </p>
+
+                </div>
+
+
+                <div class="story-list reveal">
+
+                    <div class="story-item">
+
+                        <div class="story-item-number">01</div>
+
+                        <div>
+                            <h3>Новая жизнь</h3>
+
+                            <p>
+                                Джейсон и Люсия хотят изменить свою
+                                жизнь, но путь к этому оказывается
+                                гораздо сложнее, чем кажется.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-item">
+
+                        <div class="story-item-number">02</div>
+
+                        <div>
+                            <h3>Опасные решения</h3>
+
+                            <p>
+                                Каждое новое дело способно открыть
+                                перед героями возможности и одновременно
+                                привести к непредсказуемым последствиям.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-item">
+
+                        <div class="story-item-number">03</div>
+
+                        <div>
+                            <h3>Вместе или по отдельности</h3>
+
+                            <p>
+                                Героям предстоит разобраться в своих
+                                отношениях и понять, насколько далеко
+                                они готовы зайти ради общей цели.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-item">
+
+                        <div class="story-item-number">04</div>
+
+                        <div>
+                            <h3>Мечта об американской жизни</h3>
+
+                            <p>
+                                За яркими огнями Леониды скрывается
+                                мир, в котором за успех часто приходится
+                                платить высокую цену.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ФИНАЛЬНЫЙ БЛОК
+        ========================= -->
+
+        <section class="final-section">
+
+            <div class="container reveal">
+
+                <img
+                    src="./images/gta6-logo.png"
+                    alt="GTA VI"
+                    class="final-logo"
+                    loading="lazy"
+                    onerror="this.style.display='none';"
+                >
+
+                <h2>
+                    See you in<br>
+                    <span>Vice City.</span>
+                </h2>
+
+                <p>
+                    Солнце, пальмы, музыка и бесконечные возможности.
+                    Добро пожаловать в Леониду — место, где начинается
+                    новая глава Grand Theft Auto.
+                </p>
+
+                <a
+                    href="https://www.rockstargames.com/VI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button button-primary"
+                >
+                    Официальный сайт Rockstar →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ПОДВАЛ
+    ========================= -->
+
+    <footer>
+
+        <div>
+            <div class="footer-logo">
+                VICE <span>VIBES</span>
+            </div>
+
+            <p>
+                Фанатский сайт GTA VI · 2026
+            </p>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#home">Главная</a>
+            <a href="#world">Мир игры</a>
+            <a href="#characters">Персонажи</a>
+
+            <a
+                href="https://www.rockstargames.com/VI"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Rockstar Games
+            </a>
+
+        </div>
+
+        <p>
+            Неофициальный фанатский проект.<br>
+            Не связан с Rockstar Games.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // Плавное появление блоков при прокрутке
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add('visible');
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach((element) => {
+                observer.observe(element);
+            });
+
+        } else {
+
+            revealElements.forEach((element) => {
+                element.classList.add('visible');
+            });
+
+        }
+
+    </script>
+
 </body>
 </html>
